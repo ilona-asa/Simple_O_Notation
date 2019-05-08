@@ -65,13 +65,17 @@ print(find_Bangalore_caller(calls))
 
 # Part B
 def percent_Bangalore(calls):
-    total = float(len(calls))
-    count = 0
+    total = []
+    calls_between_Bangalore = []
     for call in calls:
+        # find all unique calls from Bangalore
+        if '(080)' in call[0]:
+            if not [call[0], call[1]] in total:
+                total.append([call[0], call[1]])
+        # find all call between Bangalore's phone
         if '(080)' in call[0] and '(080)' in call[1]:
-            count += 1
-    percentage = (count/total)*100
+            if not [call[0], call[1]] in calls_between_Bangalore:
+                calls_between_Bangalore.append([call[0], call[1]])
+    percentage = (len(calls_between_Bangalore)/float(len(total)))*100
     return percentage
-    
-from_B_to_B = percent_Bangalore(calls)
 print("{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(round(from_B_to_B,2)))

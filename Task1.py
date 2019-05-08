@@ -20,14 +20,13 @@ Print a message:
 """
 
 def unique_telephone_numbers(texts, calls):
-    phones = []
+    phones = set()
     for text in texts:
-        phones.append(text[0])
-        phones.append(text[1])
+        phones.add(text[0])
+        phones.add(text[1])
     for call in calls:
-        phones.append(call[0])
-        phones.append(call[1])
-    phones_set = set(phones)
-    return "There are " + str(len(phones_set)) + " different telephone numbers in the records."
+        phones.add(call[0])
+        phones.add(call[1])
+    return "There are " + str(len(phones)) + " different telephone numbers in the records."
 
 print(unique_telephone_numbers(texts, calls))

@@ -39,12 +39,12 @@ So, this part would be
 O(n + m*m + n + n log n) = O(2n + m^2 + n log n) = O(2n + 11^2 + n log n) = O(n log n) 
 This is because we disregard smaller time complexity and goes with the biggest time complexity.
 
-Part B of this task is consist of 2 main process:
+Part B of this task is consist of:
 - iterating through calls -> O(n)
-- finding substring of (080) in a phone number -> O(m) 
-Given m is the string length of phone number which is 10 to 11 and n is the size of input.
-So, this part would be 
-O(n + 2m) = O(n + 2*11) = O(n)
+- finding calls from Bangalore -> O(m + x)
+- finding calls between Bangalore's phone number -> O(2m + y)
+Given m is the string length of phone number which is 10 to 11, n is the size of input, x is the size of all calls from Bangalore, and y is size of calls between Bangalore's phone number. If the length of n = x = y, then notation would be
+O(n + m + x + 2m + y) = O(n + m + n + 2m + n) = O(3n + 3m) = O(n + m) = O(n + 11) = O(n)
 
 
 
