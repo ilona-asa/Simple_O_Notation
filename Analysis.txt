@@ -1,0 +1,62 @@
+﻿Task0 Analysis:
+The Worst Case Big O Notation for this solution is O(1) for each of the function regardless of the size of input. The reason is because each function only has 1 line of accessing element of list by using its index. Thus, my solution is having O(1) per function or O(2) as the total.
+
+
+
+Task1 Analysis:
+My solution for this task depends heavily on the length of the input. The length of data from texts.csv and the length of data from calls.csv are the length of input for this task which represented by n. The Big O Notation would consist of:
+- the first line of creating a list -> O(1)
+- the first loop that goes through texts -> O(2n)
+- the second loop that goes through calls -> O(2n)
+- the process of removing duplicate using by converting list into set which on average works by looping through the list and putting new element into set (reference: https://stackoverflow.com/questions/34642155/what-is-time-complexity-of-a-list-to-set-conversion) -> O(n)
+So, the Big O Notation of this solution is 
+O(1+2n+2n+n) = O(5n) = O(n)
+
+
+
+Task2 Analysis:
+This task only use calls.csv as the input and I represent the length of input as n. My solution works like this:
+1. getting all unique telephone number from caller and receiver of the call. This part was solved through function unique_telephone_numbers() which iterates through calls data O(2n) and removing duplicate by converting list into set O(n). The total Big O Notation for this is O(2n + n) = O(3n)
+2. For each phone number in a unique set which has m length data, count the total of being on the phone either as the caller or as the receiver of a call. This was implemented by going through all the calls. Thus, worst case Big O Notation for this is O(4n) for each of the phone number. For all unique phone number, the worst case is O(4nm).
+3. The next step is pairing up the phone number with the time it spent on call by using zip() which result in O(1) as per this reference (https://stackoverflow.com/questions/36877715/what-is-the-time-complexity-of-zip-in-python) and use max() to determine which one that has the longest time spent on the call which has O(n). Thus, this part has O(n).
+The total Big O Notation for this solution is:
+
+O(3n + 4n*m + n) = O(4n + 4n*m) = O(n + n*m)
+
+Logically, the length of unique phone number supposed to be shorter than the length of the input (m < n). But if we assume that m == n, then the notation would be O(n + n^2).
+
+
+
+Task3 Analysis:
+Part A of this task is consist of:
+- looping through calls -> O(n)
+- using in for finding the call coming from Bangalore -> O(m)
+- using regular expression for finding matching phones who acts as receiver -> O(m) 
+- using set() to remove duplicate value -> O(n)
+- using sorted() to make the result in lexicographic order - > O(n log n)
+Given m is the string length of phone number which is 10 to 11 and n is the size of input.
+So, this part would be 
+O(n + m*m + n + n log n) = O(2n + m^2 + n log n) = O(2n + 11^2 + n log n) = O(n log n) 
+This is because we disregard smaller time complexity and goes with the biggest time complexity.
+
+Part B of this task is consist of 2 main process:
+- iterating through calls -> O(n)
+- finding substring of (080) in a phone number -> O(m) 
+Given m is the string length of phone number which is 10 to 11 and n is the size of input.
+So, this part would be 
+O(n + 2m) = O(n + 2*11) = O(n)
+
+
+
+Task4 Analysis:
+This solution consist of:
+1. populate list of call receiver, text sender, and text receiver -> O(n) for each of list
+2. iterate through caller -> O(n)
+3. use regular expression against a phone number -> O(m)
+4. compare caller's phone number with list of receiver, text sender, and text receiver -> O(n) for each list
+5. using set() to remove duplicate value -> O(n)
+6. using sorted() to makethe result in lexicographic order - > O(n log n)
+Given m is the string length of phone number which is 10 to 11 and n is the size of input.
+The notation would be 
+O(3n + n + m + 3n + n + n log n) = O(8n + m + n log n) = O(8n + 11 + n log n) = O(n + n log n) = O(n log n)
+ 
